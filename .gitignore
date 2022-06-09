@@ -1,0 +1,14 @@
+#environment specific or build files
+__pycache__/
+.vscode/
+build/
+*.egg-info/
+
+# samples
+*.png
+
+# misc
+*.cpp
+
+# venv I created for testing
+simpleatlastest/
