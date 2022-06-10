@@ -11,7 +11,8 @@ pip install .
 
 ## Usage
 
-```simpleatlas [-h] [-tl TOP_LEFT] [-tr TOP_RIGHT] [-bl BOTTOM_LEFT] [-br BOTTOM_RIGHT] [-o OUTPUT]
+```
+simpleatlas [-h] [-tl TOP_LEFT] [-tr TOP_RIGHT] [-bl BOTTOM_LEFT] [-br BOTTOM_RIGHT] [-o OUTPUT]
 
 Create a 2x2 Atlas from up to 4 input textures. If textures are named 1.png, 2.png, 3.png, 4.png This can be run   
 without any arguments.
