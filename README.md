@@ -4,9 +4,7 @@ Command line tool for creating a simple texture atlas for VRChat
 ## Installation
 
 ```
-git clone https://github.com/ArkeoTP/SimpleAtlas.git
-cd SimpleAtlas
-pip install .
+python -m pip install git+https://github.com/ArkeoTP/SimpleAtlas.git
 ```
 
 ## Usage
