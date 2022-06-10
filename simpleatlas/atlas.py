@@ -4,7 +4,7 @@ import argparse
 import sys
 
 def main():
-    parser = argparse.ArgumentParser(prog="Easy Atlas Creator",
+    parser = argparse.ArgumentParser(prog="simpleatlas",
     description=
     "Create a 2x2 Atlas from up to 4 input textures.\n" + \
     "If textures are named 1.png, 2.png, 3.png, 4.png\n" + \
@@ -15,7 +15,7 @@ def main():
     parser.add_argument("-tr", "--top_right"   , default="2.png", help="Top Right Texture, 2.png by default")
     parser.add_argument("-bl", "--bottom_left" , default="3.png", help="Bottom Left Texture, 3.png by default")
     parser.add_argument("-br", "--bottom_right", default="4.png", help="Bottom Left Texture, 4.png by default")
-    parser.add_argument("-o", "--output", default="out.png", help="output file name")
+    parser.add_argument("-o", "--output", default="out.png", help="output file name, out.png by default")
     args = parser.parse_args()
 
 
@@ -31,7 +31,7 @@ def main():
             pass
 
     if (all(img is None for img in outputs)):
-        sys.exit("At least one image needs to be supplied.\nType \"python atlas.py --help\" for help.")
+        sys.exit("At least one image needs to be supplied.\nType \"simpleatlas --help\" for help.")
     
     res = None
     for s in size:
