@@ -4,7 +4,8 @@ import argparse
 import sys
 
 def main():
-    parser = argparse.ArgumentParser(prog="simpleatlas",
+    parser = argparse.ArgumentParser(
+    prog="simpleatlas",
     description=
     "Create a 2x2 Atlas from up to 4 input textures.\n" + \
     "If textures are named 1.png, 2.png, 3.png, 4.png\n" + \
@@ -21,19 +22,31 @@ def main():
 
     inputs = [args.top_left, args.top_right, args.bottom_left, args.bottom_right]
     outputs = [None, None, None, None]
-    size = [None, None, None, None]
     
     for i in range(len(inputs)):
         try:
             outputs[i] = np.asarray(Image.open(inputs[i]))
-            size[i] = outputs[i].shape
         except:
             pass
 
     if (all(img is None for img in outputs)):
         sys.exit("At least one image needs to be supplied.\nType \"simpleatlas --help\" for help.")
+
+    # Convert 
+    max_layers = max([elem[-1] for elem in (image.shape for image in (image for image in outputs if image is not None))])
+    for idx in range(len(outputs)):
+        image = outputs[idx]
+        if image is None:
+            continue
+        layer = image.shape
+        if (layer[-1] < max_layers):
+            shape = [c for c in layer]
+            shape[-1] = 1
+            opaque = np.full(shape, 255, dtype=np.uint8)
+            outputs[idx] = np.concatenate([image, opaque], axis=-1)
     
     res = None
+    size = [image.shape for image in outputs if image is not None]
     for s in size:
         if s is not None:
             res = s
